@@ -85,7 +85,7 @@ pip install -r src/requirements.txt
 
 Create directory `data/01_raw` 
 
-Rename your daily parquet to `chatlog20240301.parquet`, copy it to `data/01_raw`
+Rename your daily parquet to `chatlog20240101.parquet`, copy it to `data/01_raw`
 
 It should look like this
 
