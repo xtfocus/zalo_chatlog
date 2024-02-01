@@ -2,6 +2,7 @@
 This is a boilerplate pipeline 'data_preprocessing'
 generated using Kedro 0.18.14
 """
+
 import json
 import logging
 from typing import Dict, List
@@ -165,7 +166,6 @@ def categorize_agent_message(chatlog_df: DataFrame):
             "status",
             "id",
             "app_code",
-            "InsertDate",
             "live_support_log_id",
             "_id",
         ],
