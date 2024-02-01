@@ -83,48 +83,61 @@ pip install -r src/requirements.txt
 
 ## How to run your Kedro pipeline
 
-You can run your Kedro project with:
+Create directory `data/01_raw` 
+
+Rename your daily parquet to `chatlog20240301.parquet`, copy it to `data/01_raw`
+
+It should look like this
+
+```
+<PROJECT DIR>
+├── conf
+│   ├── base
+│   │   ├── catalog.yml
+│   │   ├── logging.yml
+│   │   ├── parameters_data_preprocessing.yml
+│   │   ├── parameters_data_refinement.yml
+│   │   └── parameters.yml
+│   ├── local
+│   │   └── credentials.yml
+│   └── README.md
+├── data
+    ├── 01_raw
+        ├── chatlog20240101_time_feature.parquet
+```
+
+You can run your whole Kedro project with:
 
 ```
 kedro run
 ```
 
-## How to work with Kedro and notebooks
-
-> Note: Using `kedro jupyter` or `kedro ipython` to run your notebook provides these variables in scope: `context`, `catalog`, and `startup_error`.
->
-> Jupyter, JupyterLab, and IPython are already included in the project requirements by default, so once you have run `pip install -r src/requirements.txt` you will not need to take any extra steps before you use them.
-
-### Jupyter
-To use Jupyter notebooks in your Kedro project, you need to install Jupyter:
-
+To run FROM a node:
 ```
-pip install jupyter
+kedro run --from-nodes intent.organic.messages
 ```
 
-After installing Jupyter, you can start a local notebook server:
+(Replace `intent.organic.messages` with your actual node)
+
+To run only one node:
 
 ```
-kedro jupyter notebook
+kedro run --nodes intent.organic.messages
 ```
 
-### JupyterLab
-To use JupyterLab, you need to install it:
-
+### Install the LLM model
+You need the mistral:lastest model
 ```
-pip install jupyterlab
-```
-
-You can also start JupyterLab:
-
-```
-kedro jupyter lab
+ollama pull mistral
 ```
 
-### IPython
-And if you want to run an IPython session:
-
+Once the download finishes, initialize the local server with
 ```
-kedro ipython
+ollama serve
 ```
 
+Starts playing with the model. For batch inference using kedro:
+
+```
+kedro run --nodes intent.organic.messages
+```
