@@ -22,14 +22,14 @@ TEMPLATE """
 CUSTOMER said: cho chị mua thuốc cảm cúm cho cháu bé
 AGENT said: Cháu nhà mình bn tuổi ạ
 CUSTOMER said: 3 tuổi
-AGENT said: Dạ bên em có bổ phế siro rất nhạy ạ
+AGENT said: Dạ bên em có bổ phế siro rất nhạy ạ. đang được giảm giá ạ 
 CUSTOMER: Không có prospan hả shop 
-AGENT said: Dạ bên em có ạ
+AGENT said: Dạ bên em có ạ. 
 CUSTOMER: Cho prospopan
 AGENT said: Em xin phép lên đơn. Mình kiểm tra thông tin giúp em
 CUSTOMER: OK nhé
 [/INST]
-{"sent": ["ORDER", "SICK"]} 
+{"sent": ["ORDER", "SICK", "PROMO"]} 
 # DONE
 </s>
 
@@ -126,14 +126,14 @@ AGEN said: ....
 Here are the predefined sentiments and what they means:
 
 * OOS: if the agent said that the queried product was not available (clues: 'không có', 'chưa có', 'hết hàng', 'chưa kinh doanh', etc.)
-* RECOMMEND: agent suggested a product or an alternative /similar product to the queried one
+* RECOMMEND: Agent suggested a product or an alternative /similar product to the queried one
 * SICK: If medical topics were mentioned: symptoms, illness, clinical conditions
 * CONSULT: If agent gave medical advice or consultation: about diet, lifestyle, dosage
-* ORDER: conversation ended with customer making order (clues 'lên đơn' )
-* IMPATIENCE: customer showed signs of impatience due to long wait or late delivery (clues: 'lâu', 'mãi')
-* URGENT: customer urgently needed the delivery (clues: 'ngay bây giờ', 'gấp', 'khẩn cấp', 'cần liền')
-* ABORT: customer were no longer interested in making a purchase via the hotline, due to slow response or inconvenience or a change of mind
-* PROMO: customer asks about the loyalty or promotion programs (clues: "tích điểm", "cộng điểm")
+* ORDER: Conversation ended with customer making order (clues 'lên đơn' )
+* IMPATIENCE: Customer showed signs of impatience due to long wait or late delivery (clues: 'lâu', 'mãi')
+* URGENT: Customer urgently needed the delivery (clues: 'ngay bây giờ', 'gấp', 'khẩn cấp', 'cần liền')
+* ABORT: Customer were no longer interested in making a purchase via the hotline, due to slow response or inconvenience or a change of mind
+* PROMO: Loyalty or promotion programs were mentioned (clues: "tích điểm", "cộng điểm")
 * UNKNOWN: Whether the agent closed a deal is unknown from the conversation.
 
 You simple list all sentiments that appears in the conversation. Your output stream starts with "{" and terminates with "}", like this:
