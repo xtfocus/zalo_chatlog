@@ -119,13 +119,13 @@ AGEN said: ....
 
 Here are the predefined sentiments and what they means:
 * NEUTRAL: Customer's emotion was neutral
-* OOS: Customer's need was not fulfilled due to out-of-stock
-* SLOW_REPLY: Customer was unhappy because they waited too long for a reply (clues: "trả lời lâu", "chậm")
+* OOS: Customer's need was not fulfilled due to out-of-stock ( When the agent says something like "không có", "chưa có", "hết hàng", "chưa kinh doanh")
+* SLOW_REPLY: Customer was unhappy because they the agent did not reply quickly enough (clues: "trả lời lâu", "chậm")
 * SLOW_DELIVER: Customer's disappointed because the delivery was not as soon as they wanted.
 * Dissatisfaction: Customer was very unhappy
 * URGENT: Customer urgently needs the delivery (clues: 'bây giờ', 'gấp', 'khẩn cấp', 'cần liền', 'cần ngay', 'hôm nay').
 * CHEERFUL: Customer was cheerful, happy, or grateful
-* ABORT: Customer no longer interested in making a purchase via the hotline (clues: 'hủy đơn', 'hủy')
+* ABORT: The order is aborted. Customer no longer interested in the purchase (clues: 'hủy đơn', 'hủy')
 
 You simple list all sentiments that appears in the conversation. Your output stream starts with "{" and terminates with "}", like this:
 {

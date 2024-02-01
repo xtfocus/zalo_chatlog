@@ -1,11 +1,11 @@
 chatlog0101:
   type: pandas.ParquetDataSet
-  filepath: data/01_raw/chatlog20240101.parquet
-
-chatlog0201:
-  type: pandas.ParquetDataSet
   filepath: data/01_raw/chatlog20240201.parquet
 
+    #chatlog0201:
+    #  type: pandas.ParquetDataSet
+    #  filepath: data/01_raw/chatlog20240201.parquet
+    #
 chatlog0301:
   type: pandas.ParquetDataSet
   filepath: data/01_raw/chatlog20240301.parquet
