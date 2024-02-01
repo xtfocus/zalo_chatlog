@@ -1,0 +1,75 @@
+chatlog0101:
+  type: pandas.ParquetDataSet
+  filepath: data/01_raw/chatlog20240101.parquet
+
+chatlog0201:
+  type: pandas.ParquetDataSet
+  filepath: data/01_raw/chatlog20240201.parquet
+
+chatlog0301:
+  type: pandas.ParquetDataSet
+  filepath: data/01_raw/chatlog20240301.parquet
+
+chatlog0101.sorted:
+  type: pandas.ParquetDataSet
+  filepath: data/01_raw/chatlog20240101_sorted.parquet
+
+chatlog0101.positive:
+  type: pandas.ParquetDataSet
+  filepath: data/01_raw/chatlog20240101_status_positive.parquet
+
+chatlog0101.request.human.status:
+  type: pandas.ParquetDataSet
+  filepath: data/01_raw/chatlog20240101_request_human_status.parquet
+
+chatlog0101.bot.text.classified:
+  type: pandas.ParquetDataSet
+  filepath: data/01_raw/chatlog20240101_bot_text_classified.parquet
+
+chatlog0101.bot.img.classified:
+  type: pandas.ParquetDataSet
+  filepath: data/01_raw/chatlog20240101_bot_img_classified.parquet
+
+chatlog0101.json.drop:
+  type: pandas.ParquetDataSet
+  filepath: data/01_raw/chatlog20240101_json_drop.parquet
+
+chatlog0101.agent.classified:
+  type: pandas.ParquetDataSet
+  filepath: data/01_raw/chatlog20240101_agent_classified.parquet
+
+chatlog0101.customer.payload:
+  type: pandas.ParquetDataSet
+  filepath: data/01_raw/chatlog20240101_customer_payload.parquet
+
+chatlog0101.customer.event:
+  type: pandas.ParquetDataSet
+  filepath: data/01_raw/chatlog20240101_customer_event.parquet
+
+chatlog0101.agent.event:
+  type: pandas.ParquetDataSet
+  filepath: data/01_raw/chatlog20240101_agent_event.parquet
+
+chatlog0101.time.feature:
+  type: pandas.ParquetDataSet
+  filepath: data/01_raw/chatlog20240101_time_feature.parquet
+
+chatlog0101.pool.events:
+  type: pandas.ParquetDataSet
+  filepath: data/01_raw/chatlog20240101_pool_event.parquet
+
+chatlog0101.connected.session:
+  type: pandas.ParquetDataSet
+  filepath: data/01_raw/chatlog20240101_connected_session.parquet
+
+chatlog0101.organic.session:
+  type: pandas.ParquetDataSet
+  filepath: data/01_raw/chatlog20240101_connected_session.parquet
+
+chatlog0101.organic.refined:
+  type: pandas.ParquetDataSet
+  filepath: data/01_raw/chatlog20240101_organic_refined.parquet
+
+chatlog0101.organic.intent:
+  type: pandas.ParquetDataSet
+  filepath: data/01_raw/chatlog20240101_organic_intent.parquet
