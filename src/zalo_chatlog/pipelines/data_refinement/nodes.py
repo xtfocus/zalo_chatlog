@@ -177,7 +177,7 @@ def export_organic_message_data(chatlog: DataFrame) -> DataFrame:
 
 
 def classify_intent(messages: DataFrame):
-    messages = messages
+    messages = messages.head(250)
     messages_list = list(messages["readable_event"])
     messages_list = [text.strip() for text in messages_list]
 
