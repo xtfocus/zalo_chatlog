@@ -25,6 +25,12 @@ bot_img_pattern:
     - "Xem ngay sản phẩm" 
   his_vax:
     - "Vaccine/LichSuTiemChung"
+  vax_6in1:
+    - "VC6TRONG1.jpg"
+  vax_viemphoi:
+    - "VCviemphoi.jpg"
+  vax_hpv:
+    - "hpvvaccine.jpg"
   vax_reminder:
     - "SapDenLichHenTiemChung" 
   diem_hien_tai:

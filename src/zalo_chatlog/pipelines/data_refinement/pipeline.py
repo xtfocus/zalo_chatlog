@@ -19,40 +19,40 @@ def define_separation_nodes():
     return [
         node(
             func=connecting_sessions,
-            inputs=["chatlog0101.agent.event"],
-            outputs="chatlog0101.connected.session",
+            inputs=["chatlog.agent.event"],
+            outputs="chatlog.connected.session",
             name="connect.session",
         ),
         node(
             func=create_time_column,
-            inputs=["chatlog0101.connected.session"],
-            outputs="chatlog0101.time.feature",
+            inputs=["chatlog.connected.session"],
+            outputs="chatlog.time.feature",
             name="create.time.feature",
         ),
         node(
             func=pool_events,
-            inputs=["chatlog0101.time.feature", "params:event_columns"],
-            outputs="chatlog0101.pool.events",
+            inputs=["chatlog.time.feature", "params:event_columns"],
+            outputs="chatlog.pool.events",
             name="pool.events",
         ),
         node(
             func=categorize_organic_sessions,
-            inputs=["chatlog0101.pool.events", "params:organic_requirements"],
-            outputs="chatlog0101.organic.session",
+            inputs=["chatlog.pool.events", "params:organic_requirements"],
+            outputs="chatlog.organic.session",
             name="organic.session",
         ),
         node(
             func=export_organic_message_data,
-            inputs=["chatlog0101.organic.session"],
-            outputs="chatlog0101.organic.refined",
+            inputs=["chatlog.organic.session"],
+            outputs="chatlog.organic.refined",
             name="refined.organic.messages",
         ),
-        node(
-            func=classify_intent,
-            inputs=["chatlog0101.organic.refined"],
-            outputs="chatlog0101.organic.intent",
-            name="intent.organic.messages",
-        ),
+        #        node(
+        #            func=classify_intent,
+        #            inputs=["chatlog.organic.refined"],
+        #            outputs="chatlog.organic.intent",
+        #            name="intent.organic.messages",
+        #        ),
     ]
 
 

@@ -59,9 +59,12 @@ def categorize_customer_payload_row(row):
     if (row["message_type"] != "payload") or (row["source"] != 1):
         return null
     else:
-        pattern = r'"text":"(.*?)#.*?"'
+        # pattern = r'"text":"(.*?)#.*?"'
+        # There are cases where # is not in payload. Weird
+        pattern = r'"text":"(.*?)"'
 
         match = re.search(pattern, row["message"])
+
         if match:
             result = match.group(1)
             return "cus_payload_" + result.replace(" ", "")

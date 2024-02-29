@@ -49,7 +49,7 @@ def categorize_bot_text_row(row, bot_text_pattern: Dict[str, List[str]]):
             if all([value in row["message"] for value in values]):
                 return key
 
-        logger.warning(f"Non-classified bot message: {row['message']}")
+        logger.warning(f"Non-classified bot text: {row['message']}")
 
         return "bot_text_unknown"
 
@@ -77,5 +77,5 @@ def categorize_bot_img_row(row, bot_img_pattern: Dict[str, List[str]]):
             if all([value in row["message"] for value in values]):
                 return "bot_img_" + key
 
-        logger.warning(f"Non-classified bot message: {row['message']}")
+        logger.warning(f"Non-classified bot img: {row['message']}")
         return "bot_img_unknown"
