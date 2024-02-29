@@ -157,7 +157,7 @@ def export_organic_message_data(chatlog: DataFrame) -> DataFrame:
     chatlog = chatlog[chatlog["event"].isin(["cus_text_other", "agent_text_other"])]
 
     chatlog["sender"] = chatlog.progress_apply(
-        lambda x: "AGENT said: " if x["email"] else "CUSTOMER said: ", axis=1
+        lambda x: "Nhân viên nói: " if x["email"] else "Khách hàng nói: ", axis=1
     )
     chatlog["readable_event"] = chatlog["sender"] + chatlog["readable_event"]
 
