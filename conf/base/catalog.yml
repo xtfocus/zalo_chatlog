@@ -1,6 +1,6 @@
 chatlog:
   type: pandas.ParquetDataSet
-  filepath: data/01_raw/chatlog20240201.parquet
+  filepath: data/01_raw/chatlog.parquet
 
 chatlog.sorted:
   type: pandas.ParquetDataSet

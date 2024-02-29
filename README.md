@@ -1,13 +1,13 @@
-# Zalo Chatlog
+# Zalo Chatlog: Execution idea
 
 ## Overview
 
-This is the repo of Zalo Chatlog feature extraction pipelines:
+This is the **proof-of-concept** repo of Zalo Chatlog feature extraction pipelines:
 
 * preprocessing pipeline: removing errorneous rows, recognize automated and typed response
 * separation pipeline: different transformation techniques for fully automated/typed conversations vs others
 
-## Jargons Explained
+## Some Business domain knowledge
 
 Each message can come from:
 
@@ -85,7 +85,7 @@ pip install -r src/requirements.txt
 
 Create directory `data/01_raw` 
 
-Rename your daily parquet to `chatlog20240101.parquet`, copy it to `data/01_raw`
+Rename your daily parquet to `chatlog.parquet`, copy it to `data/01_raw`
 
 It should look like this
 
@@ -103,7 +103,7 @@ It should look like this
 │   └── README.md
 ├── data
     ├── 01_raw
-        ├── chatlog20240101_time_feature.parquet
+        ├── chatlog.parquet # Raw chatlog df
 ```
 
 You can run your whole Kedro project with:
@@ -126,7 +126,8 @@ kedro run --nodes intent.organic.messages
 ```
 
 ### Install the LLM model
-You need the mistral:lastest model
+
+You need the `mistral:lastest` model
 ```
 ollama pull mistral
 ```

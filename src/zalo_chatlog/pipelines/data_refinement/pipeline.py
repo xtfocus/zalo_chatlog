@@ -47,12 +47,12 @@ def define_separation_nodes():
             outputs="chatlog.organic.refined",
             name="refined.organic.messages",
         ),
-        #        node(
-        #            func=classify_intent,
-        #            inputs=["chatlog.organic.refined"],
-        #            outputs="chatlog.organic.intent",
-        #            name="intent.organic.messages",
-        #        ),
+        node(
+            func=classify_intent,
+            inputs=["chatlog.organic.refined"],
+            outputs="chatlog.organic.intent",
+            name="intent.organic.messages",
+        ),
     ]
 
 
