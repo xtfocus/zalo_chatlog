@@ -125,6 +125,11 @@ To run only one node:
 kedro run --nodes intent.organic.messages
 ```
 
+## To extract the refined message + conversation code(for annotation task)
+```
+kedro run  --to-nodes refined.organic.messages
+```
+
 ### Install the LLM model
 
 You need the `mistral:lastest` model
