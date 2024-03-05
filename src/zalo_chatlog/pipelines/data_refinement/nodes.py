@@ -2,6 +2,7 @@ import asyncio
 import json
 import logging
 import os
+import re
 from typing import Dict, List
 
 import aiohttp
@@ -150,14 +151,70 @@ def export_organic_message_data(chatlog: DataFrame) -> DataFrame:
     """
 
     chatlog = chatlog[chatlog["is_organic"]].reset_index(drop=True)
+
     # Remove the fillers. For now, keep it simple. In the future, keep a list of this.
     chatlog = chatlog[
         ~chatlog["readable_event"].str.lower().isin(["dạ", "vâng ạ", "dạ vâng ạ"])
     ]
-    chatlog = chatlog[chatlog["event"].isin(["cus_text_other", "agent_text_other"])]
+
+    # Keep some 'classified' messages for context
+    keep = ["cus_text_phone", "agent_text_confirmorder"]
+
+    chatlog = chatlog[
+        chatlog["event"].isin(["cus_text_other", "agent_text_other"] + keep)
+    ]
+
+    # Re-write
+    chatlog["readable_event"] = chatlog.progress_apply(
+        lambda x: (
+            x["readable_event"]
+            if x["event"] != "agent_text_confirmorder"
+            else "(Xác nhận đơn hàng)"
+        ),
+        axis=1,
+    )
+
+    # Re-write
+    chatlog["readable_event"] = chatlog.progress_apply(
+        lambda x: (
+            x["readable_event"]
+            if x["event"] != "cus_text_phone"
+            else "(Nhập số điện thoại)"
+        ),
+        axis=1,
+    )
+
+    abbreviation_dict = {
+        "số điện thoại": ["sdt", "sđt"],
+    }
+
+    def expand_abbreviations(abbreviation_dict, input_string):
+        pattern = re.compile(
+            r"\b(?:"
+            + "|".join(
+                re.escape(abbrev)
+                for full, abbrev_list in abbreviation_dict.items()
+                for abbrev in abbrev_list
+            )
+            + r")\b"
+        )
+        expanded_string = pattern.sub(
+            lambda match: next(
+                full
+                for full, abbrev_list in abbreviation_dict.items()
+                if match.group() in abbrev_list
+            ),
+            input_string,
+        )
+        return expanded_string
+
+    # Abbreviation
+    chatlog["readable_event"] = chatlog["readable_event"].progress_apply(
+        lambda x: expand_abbreviations(abbreviation_dict, x)
+    )
 
     chatlog["sender"] = chatlog.progress_apply(
-        lambda x: "Nhân viên nói: " if x["email"] else "Khách hàng nói: ", axis=1
+        lambda x: "Nhân viên: " if x["email"] else "Khách hàng: ", axis=1
     )
     chatlog["readable_event"] = chatlog["sender"] + chatlog["readable_event"]
 
