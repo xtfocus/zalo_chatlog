@@ -128,6 +128,8 @@ kedro run --nodes intent.organic.messages
 ## To extract the refined message + conversation code(for annotation task)
 ```
 kedro run  --to-nodes refined.organic.messages
+
+# result in data/01_raw/chatlog_organic_refined.parquet
 ```
 
 ### Install the LLM model
